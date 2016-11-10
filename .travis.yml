@@ -2,6 +2,6 @@
 
 language: R
 sudo: sudo
-cache: packages
+
 before_install:
  - sudo apt-get install libproj-dev libgeos++-dev libgdal-dev
