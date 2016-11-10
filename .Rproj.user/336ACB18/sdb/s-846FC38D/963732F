@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Get\n#'\n#' It\n#'\n#' Now\n#'\n#' @export\n#' @importFrom sf st_read\ngetit <- function() {\n  sf::st_read(system.file(\"shape/nc.shp\", package=\"sf\"), \"nc\", crs = 4267)\n}\n",
+    "created" : 1478740165845.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4071686785",
+    "id" : "963732F",
+    "lastKnownWriteTime" : 1478740197,
+    "last_content_update" : 1478740197926,
+    "path" : "~/Documents/000mdsumner/GIT/depsf/R/geti.r",
+    "project_path" : "R/geti.r",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
