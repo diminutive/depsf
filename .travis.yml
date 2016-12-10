@@ -8,6 +8,7 @@ apt_packages:
  - libproj-dev
  - libgdal-dev
  - libgeos++-dev
+ - libgeos-dev
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
