@@ -3,6 +3,7 @@
 language: R
 sudo: sudo
 
+
 before_install:
  - export CURWD=`pwd`
  - sudo apt-get install libproj-dev libgeos++-dev
