@@ -7,6 +7,10 @@ cache: packages
 apt_packages:
   - libudunits2-dev libproj-dev libgeos++-dev libgdal-dev
 
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+  - sudo apt-get update
+  - sudo apt-get upgrade
 
 # We use clang, --without-libtool and --with-debug for faster build
 compiler:
