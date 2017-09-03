@@ -1,23 +1,52 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: R
+#https://raw.githubusercontent.com/mpadge/sftest
+language: r
+warnings_are_errors: true
 sudo: required
 cache: packages
 
-# https://github.com/ropensci/rgbif/blob/master/.travis.yml#L9
-dist: trusty
+matrix:
+    allow_failures:
+        -os: osx
+    include:
+        - os: linux
+          r: release
+          dist: trusty # 14.04
+          env: R_CODECOV=true
+        # precise fails because unmet deps in libgdal-dev can not be installed
+        #- os: linux
+        #  r: release
+        #  dist: precise # 12.04
+        - os: linux
+          r: devel
+          dist: trusty
+        # This does not work:
+        #- os: linux
+        #  r: release
+        #  dist: trusty
+        #  before_install:
+        #      - sudo add-apt-repository --yes ppa:marutter/rrutter
+        #      - sudo add-apt-repository --yes ppa:marutter/c2d4u
+        #      - sudo apt-get update
+        #      - sudo apt-get install r-cran-sf
+        # note that the default osx has pre-installed gdal version 1.11.5, yet
+        # this works anyway:
+        - os: osx
+          r: release
+          before_install: ''
+          disable_homebrew: true
 
 before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install -y libudunits2-dev libproj-dev libgeos++-dev libgdal-dev
+    - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+    - sudo apt-get --yes --force-yes update -qq
+    - sudo apt-get install --yes libproj-dev libgeos-dev libgdal-dev libudunits2-dev
 
+notifications:
+  email:
+    on_success: change
+    on_failure: change
 
-# We use clang, --without-libtool and --with-debug for faster build
-compiler:
-  - clang
+r_github_packages:
+      - jimhester/covr
 
 after_success:
-  - Rscript -e 'covr::codecov()'
-
-
+      - Rscript -e 'covr::codecov()'
