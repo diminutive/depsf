@@ -3,8 +3,9 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/dis-organization/depsf.svg?branch=master)](https://travis-ci.org/)
-
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/diminutive/depsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/diminutive/depsf/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
